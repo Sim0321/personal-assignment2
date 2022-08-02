@@ -2,6 +2,7 @@
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 const TOGGLE_TODO = "TOGGLE_TODO";
+const GET_TODO_BY_ID = "GET_TODO_BY_ID";
 //Action Creator
 export const addTodo = (payload) => {
   return {
@@ -18,6 +19,13 @@ export const deleteTodo = (payload) => {
 export const toggleTodo = (payload) => {
   return {
     type: TOGGLE_TODO,
+    payload,
+  };
+};
+
+export const getTodoBYID = (payload) => {
+  return {
+    type: GET_TODO_BY_ID,
     payload,
   };
 };
@@ -68,6 +76,10 @@ const todo = (state = initalState, action) => {
             return todo;
           }
         }),
+      };
+    case GET_TODO_BY_ID:
+      return {
+        state,
       };
     default:
       return state;

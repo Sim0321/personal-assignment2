@@ -8,7 +8,7 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todo.todos);
-  console.log("todos.id :", todos);
+  // console.log("todos.id :", todos);
   // initialState을 만들어서
   // const [todo, setTodo] = useState(initialState);
   // const { name, value } = e.target; 이걸로 했어야 했나. 하지만 이해를 못하겠다..;;
@@ -31,7 +31,7 @@ const Form = () => {
     dispatch(
       // 처음에 두번 눌러야 state에 추가가 됨
       addTodo({
-        id: todos.length + 1,
+        id: todos.id,
         title,
         body,
         isDone: false,
@@ -41,10 +41,10 @@ const Form = () => {
     setTitle("");
     setBody("");
   };
+  console.log("todos :", todos);
 
   // console.log("title :", title);
   // console.log("body :", body);
-  // console.log("todos :", todos);
   return (
     <FormContainer>
       <form onSubmit={onSubmitHandler}>

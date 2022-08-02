@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { deleteTodo, toggleTodo } from "../redux/modules/todo";
 
+import { Link } from "react-router-dom";
+
 const TodoList = () => {
   const { todos } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
@@ -13,9 +15,10 @@ const TodoList = () => {
 
   const onToggleHandler = (id) => {
     dispatch(toggleTodo(id));
+    console.log("id :", id);
   };
 
-  console.log("todos :", todos);
+  // console.log("todos :", todos);
   return (
     <ListContainer>
       <h2>To Do !!</h2>
@@ -24,6 +27,7 @@ const TodoList = () => {
           (todo) =>
             !todo.isDone && (
               <Todo key={todo.id}>
+                <Link to="/detail">상세페이지</Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.body}</p>
                 <div className="btn-box">
@@ -50,6 +54,7 @@ const TodoList = () => {
           (todo) =>
             todo.isDone && (
               <Todo key={todo.id}>
+                <Link to="/detail">상세페이지</Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.body}</p>
                 <div className="btn-box">
