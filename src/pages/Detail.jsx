@@ -1,19 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getTodoBYID } from "../redux/modules/todo";
 
 const Detail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const todo = useSelector((state) => state.todo.todo);
+  const { id } = useParams();
+  console.log("Dtodo", todo);
+
+  useEffect(() => {
+    dispatch(getTodoBYID(id));
+  }, [id]); // 의존성 배열 안에 함수 넣지마라  노란색 줄은 eslint공부
+
+  // const params = useParams();
+  // console.log(params);
+  // const data = {
+  //   id: 1,
+  //   title: "hey",
+  //   body: "hey",
+  // };
+
+  // const detail = data[params];
 
   const goBack = () => {
     navigate(-1);
   };
+
+  // console.log("detail :", detail);
   return (
     <DetailContainer>
       <div>
-        <div className="ID">ID : 20</div>
-        <h1>title</h1>
-        <p>desc</p>
+        <div className="ID">ID : {todo.id}</div>
+        <h1>제목 : {todo.title}</h1>
+        <p>내용 : {todo.body}</p>
         <button onClick={goBack}>이전으로</button>
       </div>
     </DetailContainer>

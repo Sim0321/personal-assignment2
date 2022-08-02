@@ -27,7 +27,7 @@ const TodoList = () => {
           (todo) =>
             !todo.isDone && (
               <Todo key={todo.id}>
-                <Link to="/detail">상세페이지</Link>
+                <Link to={`/detail/${todo.id}`}>상세페이지</Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.body}</p>
                 <div className="btn-box">
@@ -54,7 +54,7 @@ const TodoList = () => {
           (todo) =>
             todo.isDone && (
               <Todo key={todo.id}>
-                <Link to="/detail">상세페이지</Link>
+                <Link to={`/detail/${todo.id}`}>상세페이지</Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.body}</p>
                 <div className="btn-box">

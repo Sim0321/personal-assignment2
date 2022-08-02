@@ -4,8 +4,12 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodo } from "../redux/modules/todo";
 
+import nextId from "react-id-generator";
+
 const Form = () => {
   const dispatch = useDispatch();
+
+  const id = nextId();
 
   const todos = useSelector((state) => state.todo.todos);
   // console.log("todos.id :", todos);
@@ -31,7 +35,8 @@ const Form = () => {
     dispatch(
       // 처음에 두번 눌러야 state에 추가가 됨
       addTodo({
-        id: todos.id,
+        // id: todos[todos.length - 1].id + 1,
+        id,
         title,
         body,
         isDone: false,

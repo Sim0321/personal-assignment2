@@ -33,26 +33,41 @@ export const getTodoBYID = (payload) => {
 const initalState = {
   todos: [
     {
-      id: 1,
+      id: "id1",
       title: "리액트 강의보기",
       body: "챕터 1부터 챕터 12까지 학습",
       isDone: false,
     },
     {
-      id: 2,
+      id: "id2",
       title: "점심 먹기",
       body: "점심 뭐먹지..?",
       isDone: true,
     },
   ],
+  todo: {
+    id: "",
+    title: "",
+    body: "",
+  },
 };
 
 //Reducer
 const todo = (state = initalState, action) => {
-  console.log(action);
+  console.log("action.payload :", action.payload);
+  // console.log("action :", action);
   // console.log("state :", state);
   switch (action.type) {
     case ADD_TODO:
+      // const createtodo = {
+      //   id:state.todos[state.todos.length-1].id +1,
+      //   title : action.todolist.title,
+      //   cont: action.todolist.cont,
+      //   isDone : false
+      // }
+
+      // const addTodo = [...state.todos].concat(createtodo)
+      // //[...~] 배열에 전달받은 todo값을
       return {
         ...state,
         todos: [...state.todos, action.payload],
@@ -79,7 +94,10 @@ const todo = (state = initalState, action) => {
       };
     case GET_TODO_BY_ID:
       return {
-        state,
+        ...state,
+        todo: state.todos.find((todo) => {
+          return todo.id === action.payload;
+        }),
       };
     default:
       return state;
