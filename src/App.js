@@ -10,14 +10,18 @@ import Detail from "./pages/Detail";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 
+import { BrowserRouter } from "react-router-dom";
+
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/detail/:id" element={<Detail />}></Route>
-      </Route>
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="/detail/:id" element={<Detail />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -3,13 +3,13 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import styled from "styled-components";
 
+// import Form from "./components/Form";
+
 const Layout = () => {
   return (
     <Wrap>
       <Header></Header>
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
     </Wrap>
   );
 };
