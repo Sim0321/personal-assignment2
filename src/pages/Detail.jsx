@@ -13,7 +13,7 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(getTodoBYID(id));
-  }, [id]); // 의존성 배열 안에 함수 넣지마라  노란색 줄은 eslint공부
+  }, [dispatch, id]); // 의존성 배열 안에 함수 넣지마라  노란색 줄은 eslint공부
 
   // const params = useParams();
   // console.log(params);
